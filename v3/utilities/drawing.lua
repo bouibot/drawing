@@ -133,6 +133,7 @@ do
     /////////////////////////////////////////
 
     There:
+        drawingUtility:setDefaultProperties ( self, objectType: DrawEntry, defaultProperties: table ) | nil -> set default properties for draw entry class;
         drawingUtility:drawRaw( objectType: DrawEntry, objectArguments: table, objectProperties: table ) | DrawEntry -> create a draw entry;
         drawingUtility:draw( objectType: DrawEntry, objectArguments: table, objectProperties: table ) | table -> create a draw entry with a metatable;
 
@@ -140,7 +141,14 @@ do
 
     ]]
 
-    drawingUtility._customProperties = {}
+    drawingUtility._customProperties = {};
+    drawingUtility._defaultProperties = {};
+
+    function drawingUtility.setDefaultProperties(self, objectType: DrawEntry, defaultProperties: table)
+
+        self._defaultProperties[objectType] = defaultProperties
+
+    end
 
     function drawingUtility.drawRaw(self, objectType: DrawEntry, objectArguments: table, objectProperties: table)
 
@@ -173,6 +181,16 @@ do
             objectMetatable._objectArguments = objectArguments;
 
             do
+
+                for defaultName, defaultValue in next, self._defaultProperties[objectType] or {} do
+
+                    if objectProperties[defaultName] == nil then
+
+                        objectProperties[defaultName] = defaultValue
+
+                    end
+
+                end
 
                 for propertyName, propertyValue in next, objectProperties do
 
