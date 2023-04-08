@@ -20,6 +20,7 @@ do
 
     There:
         drawingUtility.combine( firstValue: table, secondValue: table ) | table -> combine (table.insert) two tables;
+        drawingUtility.combineOverriding( firstValue: table, secondValue: table ) | table -> combine (could override indexes) two tables;
 
     /////////////////////////////////////////
 
@@ -38,6 +39,26 @@ do
         for _, objectValue in next, secondValue do
 
             table.insert(finishedTable, objectValue)
+
+        end
+
+        return finishedTable;
+
+    end
+
+    function drawingUtility.combineOverriding(self, firstValue: table, secondValue: table)
+
+        local finishedTable = {};
+
+        for objectName, objectValue in next, firstValue do
+
+            finishedTable[objectName] = objectValue
+
+        end
+
+        for objectName, objectValue in next, secondValue do
+
+            finishedTable[objectName] = objectValue
 
         end
 
@@ -102,7 +123,7 @@ do
 
     function objectClass.clone(self)
 
-        local objectClone = drawingUtility:draw(self._objectType, self._objectArguments, drawingUtility:combine(self._updatedProperties, self._customProperties));
+        local objectClone = drawingUtility:draw(self._objectType, self._objectArguments, drawingUtility:combineOverriding(self._updatedProperties, self._customProperties));
 
         return objectClone;
 
@@ -110,7 +131,7 @@ do
 
     function objectClass.cloneRaw(self)
 
-        local rawClone = drawingUtility:draw(self._objectType, self._objectArguments, drawingUtility:combine(self._clearProperties, self._customProperties));
+        local rawClone = drawingUtility:draw(self._objectType, self._objectArguments, drawingUtility:combineOverriding(self._clearProperties, self._customProperties));
 
         return rawClone;
 
