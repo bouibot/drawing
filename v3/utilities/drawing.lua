@@ -19,7 +19,7 @@ do
     /////////////////////////////////////////
 
     There:
-        drawingUtility.combine( firstValue: table, secondValue: table ) | table -> combine two tables;
+        drawingUtility.combine( firstValue: table, secondValue: table ) | table -> combine (table.insert) two tables;
 
     /////////////////////////////////////////
 
@@ -29,15 +29,15 @@ do
 
         local finishedTable = {};
 
-        for objectName, objectValue in next, firstValue do
+        for _, objectValue in next, firstValue do
 
-            finishedTable[objectName] = objectValue;
+            table.insert(finishedTable, objectValue)
 
         end
 
-        for objectName, objectValue in next, secondValue do
+        for _, objectValue in next, secondValue do
 
-            finishedTable[objectName] = objectValue;
+            table.insert(finishedTable, objectValue)
 
         end
 
