@@ -102,7 +102,7 @@ do
 
     function objectClass.clone(self)
 
-        local objectClone = self:draw(self._objectType, self._objectArguments, drawingUtility:combine(self._updatedProperties, self._customProperties));
+        local objectClone = drawingUtility:draw(self._objectType, self._objectArguments, drawingUtility:combine(self._updatedProperties, self._customProperties));
 
         return objectClone;
 
@@ -110,7 +110,7 @@ do
 
     function objectClass.cloneRaw(self)
 
-        local rawClone = self:draw(self._objectType, self._objectArguments, drawingUtility:combine(self._clearProperties, self._customProperties));
+        local rawClone = drawingUtility:draw(self._objectType, self._objectArguments, drawingUtility:combine(self._clearProperties, self._customProperties));
 
         return rawClone;
 
