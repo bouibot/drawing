@@ -207,7 +207,7 @@ do
 
                     if objectProperties[defaultName] == nil then
 
-                        objectProperties[defaultName] = defaultValue
+                        objectProperties[defaultName] = defaultValue;
 
                     end
 
@@ -248,7 +248,7 @@ do
 
                 for clearName, clearValue in next, objectMetatable._clearProperties do
 
-                    objectMetatable:modify(clearName, clearValue)
+                    objectMetatable:modify(clearName, clearValue);
 
                 end
 
@@ -262,4 +262,4 @@ do
 
 end
 
-return drawingUtility
+return drawingUtility;
