@@ -32,13 +32,13 @@ do
 
         for _, objectValue in next, firstValue do
 
-            table.insert(finishedTable, objectValue)
+            table.insert(finishedTable, objectValue);
 
         end
 
         for _, objectValue in next, secondValue do
 
-            table.insert(finishedTable, objectValue)
+            table.insert(finishedTable, objectValue);
 
         end
 
@@ -52,13 +52,13 @@ do
 
         for objectName, objectValue in next, firstValue do
 
-            finishedTable[objectName] = objectValue
+            finishedTable[objectName] = objectValue;
 
         end
 
         for objectName, objectValue in next, secondValue do
 
-            finishedTable[objectName] = objectValue
+            finishedTable[objectName] = objectValue;
 
         end
 
